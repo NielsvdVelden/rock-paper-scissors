@@ -3,17 +3,28 @@
   <head>
     <title>Rock, Paper, Scissors</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/reset.css" media="all" />
+    <link rel="stylesheet" href="css/styles.css" media="all" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <script src="script.js" defer></script>
   </head>
 
   <body>
-    <div class="buttons">
-      <button id="btnRock">Rock</button>
-      <button id="btnPaper">Paper</button>
-      <button id="btnScissors">Scissors</button>
+    <div class="container">
+      <div id="title">
+        <h1>Rock Paper Scissors</h1>
+      </div>
+      <div class="buttons">
+        <button id="btnRock"><img src="images/rock.png" /></button>
+        <button id="btnPaper"><img src="images/paper.png" /></button>
+        <button id="btnScissors"><img src="images/scissors.png" /></button>
+      </div>
+      <div class="results">Choose a handsign to start the game!</div>
+      <div class="score">
+        Human score: 0<br />
+        Computer score: 0
+      </div>
+      <div class="replayDiv"></div>
     </div>
-    <div class="results">Choose a handsign to start the game!</div>
-    <div class="score"></div>
   </body>
 </html>

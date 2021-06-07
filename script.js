@@ -32,40 +32,40 @@ function playRound(playerSelection, computerSelection) {
 
 // Added functionality to buttons and outputs results to Results div and score to Score div
 
-const playResults = document.querySelector(".results");
+const gameResults = document.querySelector(".results");
 
 // Play Rock
-const playRock = document.querySelector("#btnRock");
-playRock.addEventListener("click", () => {
-  const playRoundResultRock = playRound("rock", computerPlay);
-  playResults.innerText = playRoundResultRock;
-  if (playResults.innerText.indexOf("win") !== -1) {
+const rockButton = document.querySelector("#btnRock");
+rockButton.addEventListener("click", () => {
+  const playRock = playRound("rock", computerPlay);
+  gameResults.innerText = playRock;
+  if (gameResults.innerText.indexOf("win") !== -1) {
     ++playerWins;
-  } else if (playResults.innerText.indexOf("lose") !== -1) {
+  } else if (gameResults.innerText.indexOf("lose") !== -1) {
     ++computerWins;
   }
 });
 
 // Play Paper
-const playPaper = document.querySelector("#btnPaper");
-playPaper.addEventListener("click", () => {
-  const playRoundResultPaper = playRound("paper", computerPlay);
-  playResults.innerText = playRoundResultPaper;
-  if (playResults.innerText.indexOf("win") !== -1) {
+const paperButton = document.querySelector("#btnPaper");
+paperButton.addEventListener("click", () => {
+  const playPaper = playRound("paper", computerPlay);
+  gameResults.innerText = playPaper;
+  if (gameResults.innerText.indexOf("win") !== -1) {
     ++playerWins;
-  } else if (playResults.innerText.indexOf("lose") !== -1) {
+  } else if (gameResults.innerText.indexOf("lose") !== -1) {
     ++computerWins;
   }
 });
 
 // Play Scissors
-const playScissors = document.querySelector("#btnScissors");
-playScissors.addEventListener("click", () => {
-  const playRoundResultScissors = playRound("scissors", computerPlay);
-  playResults.innerHTML = playRoundResultScissors;
-  if (playResults.innerText.indexOf("win") !== -1) {
+const scissorsButton = document.querySelector("#btnScissors");
+scissorsButton.addEventListener("click", () => {
+  const playScissors = playRound("scissors", computerPlay);
+  gameResults.innerHTML = playScissors;
+  if (gameResults.innerText.indexOf("win") !== -1) {
     ++playerWins;
-  } else if (playResults.innerText.indexOf("lose") !== -1) {
+  } else if (gameResults.innerText.indexOf("lose") !== -1) {
     ++computerWins;
   }
 });
@@ -82,9 +82,22 @@ window.addEventListener("click", () => {
   score.innerText = scoreTracker;
 
   if (playerWins >= 5) {
-    score.innerText = "Game over! You WIN!";
+    gameResults.innerText = "You WON!";
+    score.innerText = "Play again?\n";
+    replayDiv.appendChild(replay);
   } else if (computerWins >= 5) {
-    score.innerText = "Game over! You LOSE!";
+    gameResults.innerText = "Game over! You lose!";
     playerWins = -9999;
+    score.innerText = "Play again?\n";
+    replayDiv.appendChild(replay);
   }
 });
+
+// Replay button
+const replayDiv = document.querySelector(".replayDiv");
+const replay = document.createElement("button");
+replay.classList.add("replayButton");
+replay.addEventListener("click", () => {
+  window.location.reload();
+});
+replay.innerText = "Restart";
